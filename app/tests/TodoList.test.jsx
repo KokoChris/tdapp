@@ -8,7 +8,11 @@ var mount = enzyme.mount;
 var TodoList = require('../components/TodoList');
 describe('<TodoList />', () => {
     it('should exist', () => {
-        var todoList = shallow(<TodoList todos={[{id:1,text:"blabla"}]} />);
+        var todoList = shallow(<TodoList todos={[{ id: 1, text: "blabla" }]} />);
         expect(todoList).to.exist;
+    })
+    it('should render proper amount of Todos', () => {
+        var todoList = shallow(<TodoList todos={[{ id: 1, text: "blabla" }]} />);
+        expect(todoList.find('div').find('Todo').length).to.equal(1);
     })
 })
