@@ -1,5 +1,6 @@
 var React = require('react');
 var TodoList = require('./TodoList');
+var AddTodo = require('./AddTodo');
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -16,16 +17,21 @@ class TodoApp extends React.Component {
         }
       ]
     }
+    this.handleAddTodo = this.handleAddTodo.bind(this);
+  }
+  handleAddTodo(text) {
+    alert('new todo : ' + text);
   }
   render() {
     var { todos } = this.state;
     return (
       <div>
         <TodoList todos={todos} />
+        <AddTodo addTodo={this.handleAddTodo} />
       </div>
     )
   }
-};
+}
 
 
 

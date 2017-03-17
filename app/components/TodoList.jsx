@@ -11,7 +11,7 @@ class TodoList extends React.Component {
         }
         return (
             <div>
-                {renderTodos()};
+                {renderTodos()}
             </div>
         )
     }
