@@ -12,6 +12,12 @@ describe('<AddTodo />', () => {
         var addTodo = shallow(<AddTodo />);
         expect(addTodo).to.exist;
     })
+    it('should call onAddTodo prop with valid data', () => {
+        var spy = sinon.spy();
+        var addTodo = mount(<AddTodo addTodo={spy} />);
+        addTodo.find('button').get(0).click();
+        expect(spy.called).to.be.true;
+    })
 })
 
 module.exports = AddTodo;
