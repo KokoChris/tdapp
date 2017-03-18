@@ -26,14 +26,14 @@ class TodoSearch extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="container__header">
                 <div>
                     <input type="search" value={this.state.searchText} onChange={this.handleInputChange} placeholder="searchTodoByName" />
                 </div>
                 <div>
                     <label>
                         <input type="checkbox" checked={this.state.checkboxState} onChange={this.handleCheckboxChange} />
-                        Show only completed todos
+                        Show completed todos
                     </label>
                 </div>
             </div>

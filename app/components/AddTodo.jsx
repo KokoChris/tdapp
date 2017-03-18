@@ -25,10 +25,12 @@ class AddTodo extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input autoFocus value={this.state.newTodoText} onChange={this.handleInputChange} type="text" />
-                <button type="submit" className="button primary">AddTodo</button>
-            </form>
+            <div className="container_footer">
+                <form onSubmit={this.handleSubmit}>
+                    <input autoFocus value={this.state.newTodoText} onChange={this.handleInputChange} type="text" />
+                    <button type="submit" className="button primary">AddTodo</button>
+                </form>
+            </div>
         )
     }
 }

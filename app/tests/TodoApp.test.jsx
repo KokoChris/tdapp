@@ -19,4 +19,16 @@ describe('<TodoApp />', () => {
         todoApp.instance().handleAddTodo('test text');
         expect(todoApp.state().todos[0].text).to.equal('test text');
     })
+    it('should toogle completed value when handleToggleCalled', () => {
+        var todoData = {
+            id: 11,
+            text: 'Test features',
+            completed: false
+        }
+        var todoApp = shallow(<TodoApp />);
+        todoApp.setState({ todos: [todoData] });
+        expect(todoApp.state().todos[0].id === 11).to.be.true;
+        todoApp.instance().handleToggle(11);
+        expect(todoApp.state().todos[0].completed === true).to.be.true;
+    })
 })
