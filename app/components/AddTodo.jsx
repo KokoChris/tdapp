@@ -11,8 +11,12 @@ class AddTodo extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        this.props.addTodo(this.state.newTodoText);
-        this.setState({ newTodoText: '' });
+        var currentTodoText = this.state.newTodoText;
+        if (currentTodoText.length > 0) {
+            this.props.addTodo(this.state.newTodoText);
+            this.setState({ newTodoText: '' });
+        }
+
     }
     handleInputChange(e) {
         this.setState({

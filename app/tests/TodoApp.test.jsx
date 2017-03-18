@@ -11,4 +11,12 @@ describe('<TodoApp />', () => {
         var todoApp = shallow(<TodoApp />);
         expect(todoApp).to.exist;
     })
+    it('should add todo to the todos state on handleAddTodo', () => {
+        var todoApp = shallow(<TodoApp />);
+        todoApp.setState({
+            todos: []
+        })
+        todoApp.instance().handleAddTodo('test text');
+        expect(todoApp.state().todos[0].text).to.equal('test text');
+    })
 })
