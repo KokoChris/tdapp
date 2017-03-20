@@ -32,4 +32,3 @@ describe('<AddTodo />', () => {
     });
 })
 
-module.exports = AddTodo;

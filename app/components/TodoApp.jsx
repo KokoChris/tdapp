@@ -1,7 +1,7 @@
 var React = require('react');
 import TodoList from './TodoList';
 import AddTodo from './AddTodo';
-var SearchTodo = require('./TodoSearch');
+import TodoSearch from './TodoSearch';
 var uuid = require('node-uuid');
 var todoApi = require('../api/todoApi');
 var moment = require('moment');
@@ -49,9 +49,9 @@ class TodoApp extends React.Component {
         <div className="row">
           <div className="column small-centered small-11 medium-6 large-5">
             <div className="container">
-              <SearchTodo onSearch={this.handleSearch} />
+              <TodoSearch />
               <TodoList />
-              <AddTodo addTodo={this.handleAddTodo} />
+              <AddTodo />
             </div>
           </div>
         </div>
@@ -59,7 +59,5 @@ class TodoApp extends React.Component {
     )
   }
 }
-
-
 
 module.exports = TodoApp;

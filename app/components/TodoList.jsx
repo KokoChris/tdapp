@@ -1,17 +1,18 @@
 var React = require('react');
 var { connect } = require('react-redux');
 import Todo from './Todo';
+import Api from '../api/todoApi.js';
 
 export class TodoList extends React.Component {
     render() {
-        var { todos } = this.props;
+        var { todos, showCompleted, searchText } = this.props;
         var renderTodos = () => {
             if (todos.length === 0) {
                 return (
                     <p className="container__message">No active todo items</p>
                 )
             };
-            return todos.map((todo) => {
+            return Api.getFilteredTodos(todos, showCompleted, searchText).map((todo) => {
                 return (<Todo key={todo.id} {...todo} />)
             })
         }
@@ -25,7 +26,9 @@ export class TodoList extends React.Component {
 
 var mapStateToProps = (state) => {
     return {
-        todos: state.todos
+        todos: state.todos,
+        searchText: state.searchText,
+        showCompleted: state.showCompleted
     }
 }
 
