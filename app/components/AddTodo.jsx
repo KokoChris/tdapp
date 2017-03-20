@@ -1,6 +1,8 @@
 var React = require('react');
+import { connect } from 'react-redux';
+var actions = require('../actions/actions')
 
-class AddTodo extends React.Component {
+export class AddTodo extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({
@@ -13,10 +15,9 @@ class AddTodo extends React.Component {
         e.preventDefault();
         var currentTodoText = this.state.newTodoText;
         if (currentTodoText.length > 0) {
-            this.props.addTodo(this.state.newTodoText);
+            this.props.dispatch(actions.addTodo(currentTodoText));
             this.setState({ newTodoText: '' });
         }
-
     }
     handleInputChange(e) {
         this.setState({
@@ -35,4 +36,4 @@ class AddTodo extends React.Component {
     }
 }
 
-module.exports = AddTodo;
+export default connect()(AddTodo);

@@ -1,6 +1,6 @@
 var React = require('react');
-var TodoList = require('./TodoList');
-var AddTodo = require('./AddTodo');
+import TodoList from './TodoList';
+import AddTodo from './AddTodo';
 var SearchTodo = require('./TodoSearch');
 var uuid = require('node-uuid');
 var todoApi = require('../api/todoApi');
@@ -16,7 +16,6 @@ class TodoApp extends React.Component {
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
   }
   componentDidUpdate() {
     todoApi.setTodos(this.state.todos);
@@ -35,16 +34,6 @@ class TodoApp extends React.Component {
       ]
     })
   }
-  handleToggle(id) {
-    var newTodos = this.state.todos.map((todo) => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed;
-        todo.completedAt = todo.completed ? moment().unix() : undefined;
-      }
-      return todo;
-    });
-    this.setState({ todos: newTodos });
-  }
   handleSearch(searchText, completed) {
     this.setState({
       showCompleted: completed,
@@ -61,12 +50,11 @@ class TodoApp extends React.Component {
           <div className="column small-centered small-11 medium-6 large-5">
             <div className="container">
               <SearchTodo onSearch={this.handleSearch} />
-              <TodoList todos={filteredTodos} onToggle={this.handleToggle} />
+              <TodoList />
               <AddTodo addTodo={this.handleAddTodo} />
             </div>
           </div>
         </div>
-
       </div>
     )
   }
