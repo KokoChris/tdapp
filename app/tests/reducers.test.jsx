@@ -18,22 +18,22 @@ describe('Reducers', () => {
         it('should toggle show completed', () => {
             var action = {
                 type: 'TOGGLE_SHOW_COMPLETED'
-            }
+            };
             var res = reducers.showCompletedReducer('', action);
             expect(res).to.be.true;
-        })
-    })
+        });
+    });
     describe('todosReducer', () => {
         it('should add to todos array', () => {
             var action = {
                 type: 'ADD_TODO',
                 text: 'a new todo'
-            }
+            };
             var res = reducers.todosReducer([], action);
             expect(res).to.be.instanceof(Array);
             expect(res).to.have.length(1);
-            expect(res[0].text).to.be.equal('a new todo')
-        })
+            expect(res[0].text).to.be.equal('a new todo');
+        });
         it('should toggle todo completed status', () => {
             var todos = [{
                 id: '123',
@@ -41,12 +41,12 @@ describe('Reducers', () => {
                 completed: true,
                 createdAt: 123,
                 completedAt: 125
-            }]
+            }];
 
             var action = {
                 type: 'TOGGLE_TODO',
                 id: '123'
-            }
+            };
             var res = reducers.todosReducer(todos, action);
             expect(res).to.be.instanceof(Array);
             expect(res).to.have.length(1);
@@ -54,5 +54,20 @@ describe('Reducers', () => {
             expect(res[0].completedAt).to.be.undefined;
 
         })
+        it('should add existing todos', () => {
+            var todos = [{
+                id: '123',
+                text: 'Some tas',
+                completed: true,
+                createdAt: 123,
+                completedAt: 125
+            }];
+            var action = {
+                type: 'ADD_TODOS',
+                todos
+            };
+
+            var res = reducers.todosReducer(todos, action)
+        });
     })
 })

@@ -35,4 +35,19 @@ describe('Actions', () => {
         var res = actions.toggleTodo(44);
         expect(res).to.eql(action);
     })
+    it('should generate add todos action', () => {
+        var todos = [{
+            id: '111',
+            text: 'anything',
+            completed: false,
+            completedAt: undefined,
+            createdAt: 33000
+        }]
+        var action = {
+            type: 'ADD_TODOS',
+            todos
+        }
+        var res = actions.addTodos(todos);
+        expect(res).to.eql(action);
+    })
 });
