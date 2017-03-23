@@ -15,7 +15,7 @@ export class AddTodo extends React.Component {
         e.preventDefault();
         var currentTodoText = this.state.newTodoText;
         if (currentTodoText.length > 0) {
-            this.props.dispatch(actions.addTodo(currentTodoText));
+            this.props.dispatch(actions.startAddTodo(currentTodoText));
             this.setState({ newTodoText: '' });
         }
     }

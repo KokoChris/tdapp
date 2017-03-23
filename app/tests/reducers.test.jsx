@@ -2,7 +2,6 @@ var expect = require('chai').expect;
 var reducers = require('../reducers/reducers');
 var moment = require('moment');
 
-
 describe('Reducers', () => {
     describe('searchTextReducer', () => {
         it('should set searchText', () => {
@@ -27,12 +26,17 @@ describe('Reducers', () => {
         it('should add to todos array', () => {
             var action = {
                 type: 'ADD_TODO',
-                text: 'a new todo'
+                todo: {
+                    id: 'abc123',
+                    text: 'Something to do',
+                    completed: false,
+                    createdAt: 93232932
+                }
             };
             var res = reducers.todosReducer([], action);
             expect(res).to.be.instanceof(Array);
             expect(res).to.have.length(1);
-            expect(res[0].text).to.be.equal('a new todo');
+            expect(res[0]).to.be.eql(action.todo);
         });
         it('should toggle todo completed status', () => {
             var todos = [{
@@ -67,7 +71,9 @@ describe('Reducers', () => {
                 todos
             };
 
-            var res = reducers.todosReducer(todos, action)
+            var res = reducers.todosReducer(todos, action);
+            expect(res).to.be.instanceof(Array);
+            expect(res).to.have.length(2);
         });
     })
 })
